@@ -35,7 +35,8 @@ fun Registro(
         OutlinedTextField(
             value = nombre,
             onValueChange = { nombre = it },
-            label = { Text("Nombre") }
+            label = { Text("Nombre") },
+            modifier = Modifier.fillMaxWidth()
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -43,7 +44,8 @@ fun Registro(
         OutlinedTextField(
             value = raza,
             onValueChange = { raza = it },
-            label = { Text("Raza") }
+            label = { Text("Raza") },
+            modifier = Modifier.fillMaxWidth()
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -51,7 +53,8 @@ fun Registro(
         OutlinedTextField(
             value = tamano,
             onValueChange = { tamano = it },
-            label = { Text("Tamaño") }
+            label = { Text("Tamaño") },
+            modifier = Modifier.fillMaxWidth()
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -59,7 +62,8 @@ fun Registro(
         OutlinedTextField(
             value = edad,
             onValueChange = { edad = it },
-            label = { Text("Edad") }
+            label = { Text("Edad") },
+            modifier = Modifier.fillMaxWidth()
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -67,7 +71,8 @@ fun Registro(
         OutlinedTextField(
             value = fotoUrl,
             onValueChange = { fotoUrl = it },
-            label = { Text("URL de la foto") }
+            label = { Text("URL de la foto") },
+            modifier = Modifier.fillMaxWidth()
         )
 
         Spacer(modifier = Modifier.height(12.dp))
@@ -86,29 +91,50 @@ fun Registro(
 
         Row(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
         ) {
-            Button(onClick = {
-                if (nombre.isNotBlank() && raza.isNotBlank() && tamano.isNotBlank() &&
-                    edad.isNotBlank() && fotoUrl.isNotBlank()
-                ) {
-                    val nuevaMascota = Mascotas(nombre, raza, tamano, edad, fotoUrl)
-                    mascotas.add(nuevaMascota)
+            Button(
+                onClick = {
+                    if (nombre.isNotBlank() && raza.isNotBlank() && tamano.isNotBlank() &&
+                        edad.isNotBlank() && fotoUrl.isNotBlank()
+                    ) {
+                        val nuevaMascota = Mascotas(nombre, raza, tamano, edad, fotoUrl)
+                        mascotas.add(nuevaMascota)
 
-                    // Limpiar campos
-                    nombre = ""
-                    raza = ""
-                    tamano = ""
-                    edad = ""
-                    fotoUrl = ""
-                }
-            }) {
+                        // Limpiar campos
+                        nombre = ""
+                        raza = ""
+                        tamano = ""
+                        edad = ""
+                        fotoUrl = ""
+                    }
+                },
+                shape = RoundedCornerShape(20.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary
+                ),
+                elevation = ButtonDefaults.buttonElevation(8.dp),
+                modifier = Modifier
+                    .height(50.dp)
+                    .weight(1f)
+            ) {
                 Text("Registrar")
             }
 
-            Button(onClick = {
-                navController.navigate("Carnet")
-            }) {
+            Button(
+                onClick = { navController.navigate("Carnet") },
+                shape = RoundedCornerShape(20.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.secondary,
+                    contentColor = MaterialTheme.colorScheme.onSecondary
+                ),
+                elevation = ButtonDefaults.buttonElevation(8.dp),
+                modifier = Modifier
+                    .height(50.dp)
+                    .weight(1f)
+            ) {
                 Text("Ver Carnets")
             }
         }

@@ -1,6 +1,5 @@
 package com.example.carnetmascotas.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -9,34 +8,47 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
+// Colores verdes sutiles
+val VerdeClaro = Color(0xFFB2DFDB)
+val VerdeMedio = Color(0xFF4CAF50)
+val VerdeOscuro = Color(0xFF2E7D32)
+val VerdeGris = Color(0xFF81C784)
+val VerdeSuave = Color(0xFFC8E6C9)
+val Blanco = Color(0xFFFFFFFF)
+val NegroSuave = Color(0xFF1B1B1B)
+
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = VerdeOscuro,
+    secondary = VerdeGris,
+    tertiary = VerdeMedio,
+    background = NegroSuave,
+    surface = VerdeOscuro,
+    onPrimary = Blanco,
+    onSecondary = Blanco,
+    onTertiary = Blanco,
+    onBackground = Blanco,
+    onSurface = Blanco
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = VerdeMedio,
+    secondary = VerdeClaro,
+    tertiary = VerdeGris,
+    background = VerdeSuave,
+    surface = Blanco,
+    onPrimary = Blanco,
+    onSecondary = VerdeOscuro,
+    onTertiary = VerdeOscuro,
+    onBackground = VerdeOscuro,
+    onSurface = VerdeOscuro
 )
 
 @Composable
 fun CarnetMascotasTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
